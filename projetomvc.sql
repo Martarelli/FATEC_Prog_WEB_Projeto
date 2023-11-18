@@ -43,9 +43,7 @@ CREATE TABLE `cliente` (
   `idCliente` int(11) NOT NULL,
   `nome` varchar(45) NOT NULL,
   `telefone` varchar(45) NOT NULL,
-  `endereco` varchar(200) NOT NULL,
-  `login` varchar(30) NOT NULL,
-  `senha` varchar(30) NOT NULL
+  `endereco` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
