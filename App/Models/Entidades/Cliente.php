@@ -9,8 +9,6 @@ class Cliente
     private string $nome;
     private string $telefone;
     private string $endereco;
-    private string $login;
-    private string $senha;
 
     public function getIdCliente(): int
     {
@@ -43,23 +41,5 @@ class Cliente
     public function setEndereco($endereco): void
     {
         $this->endereco = $endereco;
-    }
-    public function getLogin(): string
-    {
-        return $this->login;
-    }
-    public function setLogin($login): void
-    {
-        $this->login = $login;
-    }
-
-    public function getSenha()
-    {
-        return $this->senha;
-    }
-
-    public function setSenha($senha)
-    {
-        $this->senha = $senha;
     }
 }
