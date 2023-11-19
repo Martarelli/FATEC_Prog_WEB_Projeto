@@ -24,7 +24,7 @@ class Bebida
         return $this->nome; 
     }
 
-    public function setNome($nome) : void 
+    public function setNome($nome) : string
     {
         return $this->nome=$nome; 
     }
@@ -34,7 +34,7 @@ class Bebida
         return $this->preco; 
     }
 
-    public function setPreco($preco) : void 
+    public function setPreco($preco) : float
     {
         return $this->preco=$preco; 
     }
