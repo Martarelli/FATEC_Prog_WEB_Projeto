@@ -15,6 +15,13 @@ class ClienteDAO extends BaseDAO
         return $resultado->fetchAll(\PDO::FETCH_CLASS, Cliente::class);
     }
 
+    public function getById ($id)
+    {
+        $resultado = $this->select("SELECT * FROM cliente WHERE idCliente = $id");
+
+        return $resultado->fetchObject(Cliente::class);
+    }
+
     public function salvar(Cliente $cliente)
     {
         try {
@@ -31,6 +38,32 @@ class ClienteDAO extends BaseDAO
                     ':telefone'     =>$telefone,
                     ':endereco'     =>$endereco,
                 ]
+            );
+
+        }catch (\Exception $e){
+            throw new \Exception("Erro na gravação de dados." . $e->getMessage(), 500);
+        }
+    }
+
+    public  function atualizar(Cliente $cliente)
+    {
+        try {
+
+            $id             = $cliente->getIdCliente();
+            $nome           = $cliente->getNome();
+            $telefone          = $cliente->getTelefone();
+            $endereco     = $cliente->getEndereco();
+
+            return $this->update(
+                'cliente',
+                "nome = :nome, telefone = :telefone, endereco = :endereco",
+                [
+                    ':id'           =>$id,
+                    ':nome'         =>$nome,
+                    ':telefone'        =>$telefone,
+                    ':endereco'   =>$endereco,
+                ],
+                "idCliente = :id"
             );
 
         }catch (\Exception $e){

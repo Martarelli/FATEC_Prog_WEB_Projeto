@@ -14,6 +14,7 @@ class ClienteController extends Controller
         self::setViewParam('listaCliente', $ClienteDAO->listar());
 
         $this->render('cliente/index');
+        Sessao::limpaMensagem();
 
     }
 
@@ -58,8 +59,6 @@ class ClienteController extends Controller
 
     public function edicao($params)
     {
-        $this->auth();
-
         if(!$params){ $this->redirect('/cliente'); } 
         
         $id = $params[0];
@@ -83,13 +82,13 @@ class ClienteController extends Controller
 
     public function atualizar()
     {
-        $this->auth();
-
         if (!$_POST) { $this->redirect('/cliente'); }
         
         $cliente = new Cliente();
-        $cliente->setId($_POST['id']);
+        $cliente->setIdCliente($_POST['idCliente']);
         $cliente->setNome($_POST['nome']);
+        $cliente->setTelefone($_POST['telefone']);
+        $cliente->setEndereco($_POST['endereco']);
 
         Sessao::gravaFormulario($_POST);
 
