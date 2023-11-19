@@ -10,7 +10,7 @@
 
         <form action="http://<?php echo APP_HOST; ?>/cliente/atualizar" method="post" id="form_cadastro">
             <br />
-            <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $viewVar['cliente']->getId(); ?>">
+            <input type="hidden" class="form-control" name="idCliente" id="id" value="<?php echo $viewVar['cliente']->getIdCliente(); ?>">
 
             <div class="form-group">
                 <label for="nome">Nome</label>
