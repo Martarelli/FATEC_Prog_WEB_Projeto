@@ -110,4 +110,54 @@ class ClienteController extends Controller
 
         $this->redirect('/cliente');
     }
+
+    public function exclusao($params)
+    {
+        if(!$params){ $this->redirect('/cliente'); } 
+
+        $id = $params[0];
+
+        $clienteDAO = new ClienteDAO();
+
+        $cliente = $clienteDAO->getById($id);
+
+        if(!$cliente){
+            Sessao::gravaMensagem("Cliente (idCliente:{$id}) inexistente.");
+            $this->redirect('/cliente');
+        }
+
+        self::setViewParam('cliente',$cliente);
+
+        $this->render('/cliente/exclusao');
+
+        Sessao::limpaMensagem();
+        Sessao::limpaErro();
+    }
+
+    public function excluir()
+    {
+        if (!$_POST) { $this->redirect('/cliente'); }
+
+        $cliente = new Cliente();
+        $cliente->setIdCliente($_POST['idCliente']);
+        $cliente->setNome($_POST['nome']);
+
+        $clienteDAO = new ClienteDAO();
+
+        try {
+
+            if (!$clienteDAO->excluir($cliente->getIdCliente())){
+                Sessao::gravaMensagem("Cliente (id:{$cliente->getIdCliente()}) inexistente.");
+                $this->redirect('/cliente');
+            }
+
+        } catch (\Exception $e) {
+            Sessao::gravaMensagem($e->getMessage());
+            $this->redirect('/cliente');            
+        }        
+
+        Sessao::gravaMensagem("Cliente '{$cliente->getNome()}' excluido com sucesso!");
+
+        $this->redirect('/cliente');
+    }
 }

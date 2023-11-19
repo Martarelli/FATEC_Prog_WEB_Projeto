@@ -24,7 +24,7 @@
             </div>
             <br />
             <button type="submit" class="btn btn-success btn-sm"><i class="fa-solid fa-floppy-disk"></i> Salvar </button>
-            <a href="http://<?php echo APP_HOST; ?>/fornecedor" class="btn btn-danger btn-sm"><i class="fa-solid fa-xmark"></i> Cancelar </a>
+            <a href="http://<?php echo APP_HOST; ?>/cliente" class="btn btn-danger btn-sm"><i class="fa-solid fa-xmark"></i> Cancelar </a>
         </form>
     </div>
     <div class=" col-md-3"></div>

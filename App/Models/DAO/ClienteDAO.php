@@ -70,6 +70,17 @@ class ClienteDAO extends BaseDAO
             throw new \Exception("Erro na gravação de dados." . $e->getMessage(), 500);
         }
     }
+
+    public function excluir (int $id)
+    {
+        try {
+
+            return $this->delete('cliente', "idCliente = $id");
+
+        }catch (\Exception $e) {
+            throw new \Exception("Erro ao excluir o cliente. " . $e->getMessage(), 500);
+        }
+    }
     
 }
 
