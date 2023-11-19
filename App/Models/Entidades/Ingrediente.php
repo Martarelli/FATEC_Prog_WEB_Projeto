@@ -1,24 +1,23 @@
 <?php 
 
-namespace Models\Entidades;
+namespace App\Models\Entidades;
 
 
-class Ingredientes 
+class Ingrediente 
 {
-    private int $idIngredientes; 
+    private int $idIngrediente; 
     private string $nome; 
     private float $preco; 
     
 
-    public function getIdIngredientes()
+    public function getIdIngrediente()
     {
-        return $this->idIngredientes;
+        return $this->idIngrediente;
     } 
-    public function setIdIngredientes($idIngredientes)
+    public function setIdIngrediente($idIngrediente)
     {
-        $this->idIngredientes = $idIngredientes;
+        $this->idIngrediente = $idIngrediente;
     }
-
 
     public function getNome()
     {

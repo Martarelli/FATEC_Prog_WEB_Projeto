@@ -8,6 +8,7 @@ class Pizza
     private int $idPizza; 
     private string $nome;
     private float $preco; 
+    private string $tamanho;
     private bool $personalizada; 
 
    public function __construct()
@@ -49,7 +50,17 @@ class Pizza
 
         return $this;
     }
+    
+    public function getTamanho(): string
+    {
+        return $this->tamanho;
+    }
 
+    public function setTamanho(string $tamanho): self
+    {
+        $this->tamanho = $tamanho;
+        return $this;
+    }
     public function getPersonalizada()
     {
         return $this->personalizada;
@@ -59,4 +70,5 @@ class Pizza
     {
         $this->personalizada = $personalizada;
     }
+
 }

@@ -1,13 +1,12 @@
 <?php 
 
-namespace Models\Entidades;
+namespace App\Models\Entidades;
 
 
 class Pedido 
 {
     private int $idPedido; 
     private Cliente $idCliente;
-    private Fornada $idFornada;   
 
     public function getIdPedido()
     {
@@ -19,7 +18,6 @@ class Pedido
         $this->idPedido = $idPedido;
     }
 
- 
     public function getIdCliente()
     {
         return $this->idCliente;
@@ -28,16 +26,5 @@ class Pedido
     public function setIdCliente(Cliente $idCliente)
     {
         $this->idCliente = $idCliente;
-    }
-
-    public function getIdFornada()
-    {
-        return $this->idFornada;
-    }
-
- 
-    public function setIdFornada(Fornada $idFornada)
-    {
-        $this->idFornada = $idFornada;
     }
 }

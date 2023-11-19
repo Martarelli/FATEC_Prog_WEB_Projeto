@@ -1,6 +1,6 @@
 <?php 
 
-namespace Models\Entidades;
+namespace App\Models\Entidades;
 
 
 class Bebida 
@@ -9,22 +9,33 @@ class Bebida
     private string $nome;
     private float $preco; 
 
-    public function getIdBebida() : int {
+    public function getIdBebida() : int 
+    {
         return $this->idBebida; 
     }
-    public function setIdBebida($id) : void {
+
+    public function setIdBebida($id) : void 
+    {
         $this->idBebida=$id; 
     }
-    public function getNome() : string{
+
+    public function getNome() : string
+    {
         return $this->nome; 
     }
-    public function setNome($nome) : void {
+
+    public function setNome($nome) : void 
+    {
         return $this->nome=$nome; 
     }
-    public function getPreco() : float{
+
+    public function getPreco() : float
+    {
         return $this->preco; 
     }
-    public function setPreco($preco) : void {
+
+    public function setPreco($preco) : void 
+    {
         return $this->preco=$preco; 
     }
   
