@@ -2,6 +2,6 @@
     <h1><?= TITLE ?></h1>
      <div class="starter-template">
         <br /> 
-        <p>ClientePage :)</p>
+        <p> <?php var_dump($viewVar["listaCliente"]) ?> </p>
     </div>
 </div>

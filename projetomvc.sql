@@ -40,7 +40,7 @@ CREATE TABLE `bebida` (
 --
 
 CREATE TABLE `cliente` (
-  `idCliente` int(11) NOT NULL,
+  `idCliente` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL,
   `telefone` varchar(45) NOT NULL,
   `endereco` varchar(200) NOT NULL
@@ -117,12 +117,6 @@ CREATE TABLE `tamanho` (
 --
 ALTER TABLE `bebida`
   ADD PRIMARY KEY (`idBebida`);
-
---
--- Índices de tabela `cliente`
---
-ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`idCliente`);
 
 --
 -- Índices de tabela `fornada`
