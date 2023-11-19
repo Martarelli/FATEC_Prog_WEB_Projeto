@@ -32,7 +32,7 @@
                                 <td><?= $cliente->getNome() ?></td>
                                 <td><?= $cliente->getTelefone() ?></td>
                                 <td><?= $cliente->getEndereco() ?></td>
-                                <td style="width:15%">
+                                <td style="width:15%; text-align: center;">
                                     <a href="http://<?= APP_HOST ?>/cliente/edicao/<?= $cliente->getIdCliente() ?>" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i> Editar </a>
                                     <a href="http://<?= APP_HOST ?>/cliente/exclusao/<?= $cliente->getIdCliente() ?>" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Excluir </a>   
                                 </td>
