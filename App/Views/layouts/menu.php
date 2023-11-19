@@ -5,7 +5,12 @@
             <ul class="nav navbar-nav mr-auto">
                 <li class="nav-item <?php if($viewVar['nameController'] == "HomeController") { ?> active <?php } ?>">
                     <a class="nav-link" href="http://<?php echo APP_HOST; ?>" >
-                    <i class="fa-solid fa-house"></i>&nbsp;Home</a>
+                    <i class="fa-solid fa-house"></i> Home</a>
+                    </a>
+                </li>
+                <li class="nav-item <?php if($viewVar['nameController'] == "ClienteController") { ?> active <?php } ?>">
+                    <a class="nav-link" href="http://<?php echo APP_HOST . "/cliente"; ?>" >
+                    <i class="fa-solid fa-users"></i> Clientes</a>
                     </a>
                 </li>
             </ul>
