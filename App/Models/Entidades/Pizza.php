@@ -1,6 +1,6 @@
 <?php 
 
-namespace Models\Entidades;
+namespace App\Models\Entidades;
 
 
 class Pizza 
@@ -9,12 +9,6 @@ class Pizza
     private string $nome;
     private float $preco; 
     private string $tamanho;
-    private bool $personalizada; 
-
-   public function __construct()
-   {
-        $this->personalizada = false; 
-   } 
 
     public function getIdPizza()
     {
@@ -60,15 +54,6 @@ class Pizza
     {
         $this->tamanho = $tamanho;
         return $this;
-    }
-    public function getPersonalizada()
-    {
-        return $this->personalizada;
-    }
-
-    public function setPersonalizada($personalizada)
-    {
-        $this->personalizada = $personalizada;
     }
 
 }

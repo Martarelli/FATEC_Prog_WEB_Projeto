@@ -42,8 +42,7 @@ CREATE TABLE `pizza` (
   `idPizza` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `preco` float NOT NULL,
-  `tamanho` varchar(50) NOT NULL,
-  `personalzada` tinyint(1) DEFAULT NULL
+  `tamanho` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
