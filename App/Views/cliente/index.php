@@ -3,7 +3,7 @@
     <div class="row">
         <br />
         <div class="col-md-12">
-            <a href="http://<?php echo APP_HOST; ?>/cliente/cadastro" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar</a>
+            <a href="http://<?php echo APP_HOST; ?>/cliente/cadastro" class="btn btn-success btn-sm"><i class="fa-solid fa-user-plus"></i> Adicionar</a>
         </div>
         <div class="col-md-12">
             <hr>
@@ -33,8 +33,8 @@
                                 <td><?= $cliente->getTelefone() ?></td>
                                 <td><?= $cliente->getEndereco() ?></td>
                                 <td style="width:15%">
-                                    <a href="http://<?= APP_HOST ?>/cliente/edicao/<?= $cliente->getId() ?>" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-edit"></span> Editar </a>
-                                    <a href="http://<?= APP_HOST ?>/cliente/exclusao/<?= $cliente->getId() ?>" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Excluir </a>   
+                                    <a href="http://<?= APP_HOST ?>/cliente/edicao/<?= $cliente->getIdCliente() ?>" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i> Editar </a>
+                                    <a href="http://<?= APP_HOST ?>/cliente/exclusao/<?= $cliente->getIdCliente() ?>" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Excluir </a>   
                                 </td>
                             </tr>
                         <?php } ?>
