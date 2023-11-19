@@ -2,8 +2,9 @@
 
 namespace App\Models\DAO;
 
+use App\Models\Entidades\Cliente;
 use Exception;
-use Models\Entidades\Cliente;
+
 
 class ClienteDAO extends BaseDAO
 {

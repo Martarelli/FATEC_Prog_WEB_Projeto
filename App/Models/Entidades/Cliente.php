@@ -1,6 +1,6 @@
 <?php
 
-namespace Models\Entidades;
+namespace App\Models\Entidades;
 
 
 class Cliente
