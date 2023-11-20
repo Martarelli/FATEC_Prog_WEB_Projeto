@@ -45,42 +45,43 @@ class PizzaDAO extends BaseDAO
         }
     }
 
-    // public  function atualizar(Pizza $pizza)
-    // {
-    //     try {
+    public  function atualizar(Pizza $pizza)
+    {
+        try {
 
-    //         $id             = $cliente->getIdCliente();
-    //         $nome           = $cliente->getNome();
-    //         $telefone          = $cliente->getTelefone();
-    //         $endereco     = $cliente->getEndereco();
+            $id             = $pizza->getIdPizza();
+            $nome           = $pizza->getNome();
+            $preco          = $pizza->getPreco();
+            $tamanho        = $pizza->getTamanho();
 
-    //         return $this->update(
-    //             'cliente',
-    //             "nome = :nome, telefone = :telefone, endereco = :endereco",
-    //             [
-    //                 ':id'           =>$id,
-    //                 ':nome'         =>$nome,
-    //                 ':telefone'        =>$telefone,
-    //                 ':endereco'   =>$endereco,
-    //             ],
-    //             "idCliente = :id"
-    //         );
 
-    //     }catch (\Exception $e){
-    //         throw new \Exception("Erro na gravação de dados." . $e->getMessage(), 500);
-    //     }
-    // }
+            return $this->update(
+                'pizza',
+                "nome = :nome, preco = :preco, tamanho = :tamanho",
+                [
+                    ':id'           =>$id,
+                    ':nome'         =>$nome,
+                    ':preco'        =>$preco,
+                    ':tamanho'   =>$tamanho,
+                ],
+                "idPizza = :id"
+            );
 
-    // public function excluir (int $id)
-    // {
-    //     try {
+        }catch (\Exception $e){
+            throw new \Exception("Erro na gravação de dados." . $e->getMessage(), 500);
+        }
+    }
 
-    //         return $this->delete('cliente', "idCliente = $id");
+    public function excluir (int $id)
+    {
+        try {
 
-    //     }catch (\Exception $e) {
-    //         throw new \Exception("Erro ao excluir o cliente. " . $e->getMessage(), 500);
-    //     }
-    // }
+            return $this->delete('pizza', "idPizza = $id");
+
+        }catch (\Exception $e) {
+            throw new \Exception("Erro ao excluir o pizza. " . $e->getMessage(), 500);
+        }
+    }
     
 }
 

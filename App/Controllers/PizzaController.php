@@ -56,107 +56,107 @@ class PizzaController extends Controller
         $this->redirect('/pizza');
     }
 
-    // public function edicao($params)
-    // {
-    //     if(!$params){ $this->redirect('/cliente'); } 
+    public function edicao($params)
+    {
+        if(!$params){ $this->redirect('/pizza'); } 
         
-    //     $id = $params[0];
+        $id = $params[0];
 
-    //     $clienteDAO = new ClienteDAO();
+        $pizzaDAO = new PizzaDAO();
 
-    //     $cliente = $clienteDAO->getById($id);
+        $pizza = $pizzaDAO->getById($id);
 
-    //     if(!$cliente){
-    //         Sessao::gravaErro("Cliente (id:{$id}) inexistente.");
-    //         $this->redirect('/cliente');
-    //     }
+        if(!$pizza){
+            Sessao::gravaErro("Pizza (id:{$id}) inexistente.");
+            $this->redirect('/pizza');
+        }
 
-    //     self::setViewParam('cliente',$cliente);
+        self::setViewParam('pizza', $pizza);
 
-    //     $this->render('/cliente/editar');
+        $this->render('/pizza/editar');
 
-    //     Sessao::limpaMensagem();
-    //     Sessao::limpaErro();
-    // }
+        Sessao::limpaMensagem();
+        Sessao::limpaErro();
+    }
 
-    // public function atualizar()
-    // {
-    //     if (!$_POST) { $this->redirect('/cliente'); }
+    public function atualizar()
+    {
+        if (!$_POST) { $this->redirect('/pizza'); }
         
-    //     $cliente = new Cliente();
-    //     $cliente->setIdCliente($_POST['idCliente']);
-    //     $cliente->setNome($_POST['nome']);
-    //     $cliente->setTelefone($_POST['telefone']);
-    //     $cliente->setEndereco($_POST['endereco']);
+        $pizza = new Pizza();
+        $pizza->setIdPizza($_POST['idPizza']);
+        $pizza->setNome(strtolower($_POST['nome']));
+        $pizza->setPreco($_POST['preco']);
+        $pizza->setTamanho(strtolower($_POST['tamanho']));
 
-    //     Sessao::gravaFormulario($_POST);
+        Sessao::gravaFormulario($_POST);
 
-    //     try {
+        try {
 
-    //         $clienteDAO = new ClienteDAO();
-    //         $clienteDAO->atualizar($cliente);
+            $pizzaDAO = new PizzaDAO();
+            $pizzaDAO->atualizar($pizza);
 
-    //     } catch (\Exception $e) {
-    //         Sessao::gravaMensagem($e->getMessage());
-    //         $this->redirect('/cliente');            
-    //     }
+        } catch (\Exception $e) {
+            Sessao::gravaMensagem($e->getMessage());
+            $this->redirect('/cliente');            
+        }
 
-    //     Sessao::limpaFormulario();
-    //     Sessao::limpaMensagem();
-    //     Sessao::limpaErro();
+        Sessao::limpaFormulario();
+        Sessao::limpaMensagem();
+        Sessao::limpaErro();
 
-    //     Sessao::gravaMensagem("Cliente atualizado com sucesso!");
+        Sessao::gravaMensagem("Pizza atualizada com sucesso!");
 
-    //     $this->redirect('/cliente');
-    // }
+        $this->redirect('/pizza');
+    }
 
-    // public function exclusao($params)
-    // {
-    //     if(!$params){ $this->redirect('/cliente'); } 
+    public function exclusao($params)
+    {
+        if(!$params){ $this->redirect('/pizza'); } 
 
-    //     $id = $params[0];
+        $id = $params[0];
 
-    //     $clienteDAO = new ClienteDAO();
+        $pizzaDAO = new PizzaDAO();
 
-    //     $cliente = $clienteDAO->getById($id);
+        $pizza = $pizzaDAO->getById($id);
 
-    //     if(!$cliente){
-    //         Sessao::gravaMensagem("Cliente (idCliente:{$id}) inexistente.");
-    //         $this->redirect('/cliente');
-    //     }
+        if(!$pizza){
+            Sessao::gravaMensagem("Pizza (idPizza:{$id}) inexistente.");
+            $this->redirect('/pizza');
+        }
 
-    //     self::setViewParam('cliente',$cliente);
+        self::setViewParam('pizza', $pizza);
 
-    //     $this->render('/cliente/exclusao');
+        $this->render('/pizza/exclusao');
 
-    //     Sessao::limpaMensagem();
-    //     Sessao::limpaErro();
-    // }
+        Sessao::limpaMensagem();
+        Sessao::limpaErro();
+    }
 
-    // public function excluir()
-    // {
-    //     if (!$_POST) { $this->redirect('/cliente'); }
+    public function excluir()
+    {
+        if (!$_POST) { $this->redirect('/cliente'); }
 
-    //     $cliente = new Cliente();
-    //     $cliente->setIdCliente($_POST['idCliente']);
-    //     $cliente->setNome($_POST['nome']);
+        $pizza = new Pizza();
+        $pizza->setIdPizza($_POST['idPizza']);
+        $pizza->setNome($_POST['nome']);
 
-    //     $clienteDAO = new ClienteDAO();
+        $pizzaDAO = new PizzaDAO();
 
-    //     try {
+        try {
 
-    //         if (!$clienteDAO->excluir($cliente->getIdCliente())){
-    //             Sessao::gravaMensagem("Cliente (id:{$cliente->getIdCliente()}) inexistente.");
-    //             $this->redirect('/cliente');
-    //         }
+            if (!$pizzaDAO->excluir($pizza->getIdPizza())){
+                Sessao::gravaMensagem("Pizza (id:{$pizza->getIdPizza()}) inexistente.");
+                $this->redirect('/pizza');
+            }
 
-    //     } catch (\Exception $e) {
-    //         Sessao::gravaMensagem($e->getMessage());
-    //         $this->redirect('/cliente');            
-    //     }        
+        } catch (\Exception $e) {
+            Sessao::gravaMensagem($e->getMessage());
+            $this->redirect('/pizza');            
+        }        
 
-    //     Sessao::gravaMensagem("Cliente '{$cliente->getNome()}' excluido com sucesso!");
+        Sessao::gravaMensagem("Pizza '{$pizza->getNome()}' excluido com sucesso!");
 
-    //     $this->redirect('/cliente');
-    // }
+        $this->redirect('/pizza');
+    }
 }
