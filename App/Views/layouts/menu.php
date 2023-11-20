@@ -13,6 +13,11 @@
                     <i class="fa-solid fa-users"></i> Clientes</a>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php if($viewVar['nameController'] == "PizzaController") { ?> active <?php } ?>" href="http://<?php echo APP_HOST . "/pizza"; ?>" >
+                    <i class="fa-solid fa-pizza-slice"></i> Pizza</a>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
