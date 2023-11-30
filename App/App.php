@@ -17,7 +17,7 @@ class App
     {
         define('APP_HOST'       , $_SERVER['HTTP_HOST'] . "/FATEC_Prog_WEB_Projeto");
         define('PATH'           , realpath('./'));
-        define('TITLE'          , "Home Projeto MVC PHP");
+        define('TITLE'          , "Pizzaria Ratatouille");
         define('DB_HOST'        , "localhost");
         define('DB_USER'        , "root");
         define('DB_PASSWORD'    , "");
