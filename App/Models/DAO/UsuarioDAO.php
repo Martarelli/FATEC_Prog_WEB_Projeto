@@ -47,7 +47,7 @@ class UsuarioDAO extends BaseDAO
     {
         try {
 
-            $id         = $usuario->getIdUsuario();
+            $idUsuario         = $usuario->getIdUsuario();
             $nome       = $usuario->getNome();
             $email      = $usuario->getEmail();
             $username   = $usuario->getUsername();
@@ -58,13 +58,13 @@ class UsuarioDAO extends BaseDAO
                 "nome = :nome, email = :email, username = :username, password = :password", 
                 
                 [
-                    ':id'       =>$id, 
+                    ':idUsuario'       =>$idUsuario, 
                     ':nome'     =>$nome, 
                     ':email'    =>$email,
                     ':username' =>$username,
                     ':password' =>$password
                 ], 
-                "id = :id"
+                "idUsuario = :idUsuario"
             );
             
         } catch (\Exception $e) {
@@ -76,7 +76,7 @@ class UsuarioDAO extends BaseDAO
     {
         try {
 
-            $id         = $usuario->getIdUsuario();
+            $idUsuario         = $usuario->getIdUsuario();
             $password   = $usuario->getPassword();
 
             return $this->update(
@@ -84,10 +84,10 @@ class UsuarioDAO extends BaseDAO
                 "password = :password", 
                 
                 [
-                    ':id'       =>$id, 
+                    ':idUsuario'       =>$idUsuario, 
                     ':password' =>$password
                 ], 
-                "id = :id"
+                "idUsuario = :idUsuario"
             );
             
         } catch (\Exception $e) {
@@ -125,7 +125,7 @@ class UsuarioDAO extends BaseDAO
                 return 0; 
             }
 
-            return $usuario->getId();            
+            return $usuario->getIdUsuario();            
 
         }catch (\Exception $e){
             throw new \Exception("Erro no acesso aos dados.", 500);

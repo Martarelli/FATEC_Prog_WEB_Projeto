@@ -11,7 +11,6 @@ class UsuarioController extends Controller
 {
     public function index()
     {
-        // Verifica se está logado.
         if (!$this->auth()) $this->redirect('/login/index');
 
         $usuarioDAO = new UsuarioDAO();
@@ -126,13 +125,13 @@ class UsuarioController extends Controller
 
         $resultado  = $usuarioDAO->verificaEmail($usuario->getEmail());
 
-        if($resultado && $resultado['id'] != $usuario->getId()) {
+        if($resultado && $resultado['id'] != $usuario->getIdUsuario()) {
             $erros[] = "O email '{$usuario->getEmail()}' já está sendo utilizado!";
         }
 
         $resultado  = $usuarioDAO->verificaUsuario($usuario->getUsername());
 
-        if($resultado && $resultado['id'] != $usuario->getId()) {
+        if($resultado && $resultado['id'] != $usuario->getIdUsuario()) {
             $erros[] = "O nome de usuário '{$usuario->getUsername()}' já esta sendo utilizado!";
         }
 
@@ -161,6 +160,8 @@ class UsuarioController extends Controller
 
     public function exclusao($params)
     {
+        if (!$this->auth()) $this->redirect('/login/index');
+
         $id = $params[0];
 
         $usuarioDAO = new UsuarioDAO();
@@ -181,6 +182,8 @@ class UsuarioController extends Controller
 
     public function excluir()
     {
+        if (!$this->auth()) $this->redirect('/login/index');
+
         $usuario = new Usuario();
         $usuario->setIdUsuario($_POST['id']);
         $usuario->setNome($_POST['nome']);
@@ -262,6 +265,8 @@ class UsuarioController extends Controller
 
     public function resetPassword()
     {
+        if (!$this->auth()) $this->redirect('/login/index');
+
         $usuario = new Usuario();
 
         $usuario->setIdUsuario($_POST['id']);
@@ -299,5 +304,7 @@ class UsuarioController extends Controller
         Sessao::gravaMensagem("Usuário atualizado com sucesso!");
 
         $this->redirect('/login/dashboard');
+
+        Sessao::limpaMensagem();
     }
 }

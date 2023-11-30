@@ -94,11 +94,17 @@ class LoginController extends Controller
 
     public function dashboard()
     {
+        if (!$this->auth()) $this->redirect('/login/index');
+
         $this->render('login/dashboard');
+
+        Sessao::limpaMensagem();
     }
 
     public function reset()
     {
+        if (!$this->auth()) $this->redirect('/login/index');
+
         $id = $_SESSION['iduser'];
 
         $usuarioDAO = new UsuarioDAO();
@@ -120,6 +126,8 @@ class LoginController extends Controller
 
     public function logout() 
     {
+        if (!$this->auth()) $this->redirect('/login/index');
+
         Sessao::limpaFormulario();
         Sessao::limpaMensagem();
         Sessao::limpaErro();

@@ -9,6 +9,8 @@ class PizzaController extends Controller
 {
     public function index()
     {
+        if (!$this->auth()) $this->redirect('/login/index');
+
         $PizzaDAO = new PizzaDAO();
 
         self::setViewParam('listaPizza', $PizzaDAO->listar());
@@ -19,6 +21,8 @@ class PizzaController extends Controller
 
     public function cadastro()
     {
+        if (!$this->auth()) $this->redirect('/login/index');
+
         $this->render('pizza/cadastro');
 
         Sessao::limpaFormulario();
@@ -28,6 +32,8 @@ class PizzaController extends Controller
 
     public function salvar()
     {
+        if (!$this->auth()) $this->redirect('/login/index');
+
         if (!$_POST) { $this->redirect('/pizza'); }
 
         $pizza = new Pizza();
@@ -58,6 +64,8 @@ class PizzaController extends Controller
 
     public function edicao($params)
     {
+        if (!$this->auth()) $this->redirect('/login/index');
+
         if(!$params){ $this->redirect('/pizza'); } 
         
         $id = $params[0];
@@ -81,6 +89,8 @@ class PizzaController extends Controller
 
     public function atualizar()
     {
+        if (!$this->auth()) $this->redirect('/login/index');
+
         if (!$_POST) { $this->redirect('/pizza'); }
         
         $pizza = new Pizza();
@@ -112,6 +122,8 @@ class PizzaController extends Controller
 
     public function exclusao($params)
     {
+        if (!$this->auth()) $this->redirect('/login/index');
+
         if(!$params){ $this->redirect('/pizza'); } 
 
         $id = $params[0];
@@ -135,6 +147,8 @@ class PizzaController extends Controller
 
     public function excluir()
     {
+        if (!$this->auth()) $this->redirect('/login/index');
+        
         if (!$_POST) { $this->redirect('/cliente'); }
 
         $pizza = new Pizza();
