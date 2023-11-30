@@ -35,8 +35,8 @@
                                 <td><?= $usuario->getUsername() ?></td>
                                 <td><?= $usuario->getData_cadastro() ?></td>
                                 <td class="text-center">
-                                    <a href="http://<?= APP_HOST ?>/usuario/edicao/<?= $usuario->getIdUsuario() ?>" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar </a>
-                                    <a href="http://<?= APP_HOST ?>/usuario/exclusao/<?= $usuario->getIdUsuario() ?>" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Excluir </a>   
+                                    <a href="http://<?= APP_HOST ?>/usuario/edicao/<?= $usuario->getIdUsuario() ?>" class="btn btn-info btn-sm"><i class="fa-solid fa-pen-to-square"></i>  Editar </a>
+                                    <a href="http://<?= APP_HOST ?>/usuario/exclusao/<?= $usuario->getIdUsuario() ?>" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Excluir </a>   
                                 </td>
                             </tr>
                         <?php } ?>

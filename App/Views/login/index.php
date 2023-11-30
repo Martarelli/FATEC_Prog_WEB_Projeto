@@ -3,7 +3,7 @@
     <p>Por favor, entre com os seus dados de login.</p>
     <hr />
     <div class="row">
-        <div class="col-md-9" style="padding-left: 40px;">
+        <div class="col-md-9">
             <br />
             <?php if($Sessao::retornaMensagem()){ ?>
                 <div class="alert alert-warning" role="alert">
@@ -31,7 +31,7 @@
                     </div>    
                     <br />
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;&nbsp;Login </button>
+                        <button type="submit" class="btn btn-dark btn-sm p-2"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
                         <br /><br />
                         <p>Não possui uma conta? <a href="http://<?php echo APP_HOST; ?>/login/register">Registre-se agora</a>.</p>
                     </div>
