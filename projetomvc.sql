@@ -45,6 +45,15 @@ CREATE TABLE `pizza` (
   `tamanho` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE `usuario` (
+  `idUsuario` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `username` varchar(50) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `data_cadastro` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- --------------------------------------------------------
 
 ALTER TABLE `bebida`
@@ -63,6 +72,9 @@ ALTER TABLE `pedido`
 ALTER TABLE `pizza`
   ADD PRIMARY KEY (`idPizza`) ;
 
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`idUsuario`);
+
 -- --------------------------------------------------------
 
 ALTER TABLE `bebida`
@@ -79,6 +91,9 @@ ALTER TABLE `pedido`
 
 ALTER TABLE `pizza`
   MODIFY `idPizza` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `usuario`
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `pedido`
   ADD CONSTRAINT `fk_id_cliente` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`idCliente`);
