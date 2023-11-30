@@ -9,17 +9,22 @@ class ClienteController extends Controller
 {
     public function index()
     {
+        if (!$this->auth()) $this->redirect('/login/index');
+
         $ClienteDAO = new ClienteDAO();
 
         self::setViewParam('listaCliente', $ClienteDAO->listar());
 
         $this->render('cliente/index');
+        
         Sessao::limpaMensagem();
 
     }
 
     public function cadastro()
     {
+        if (!$this->auth()) $this->redirect('/login/index');
+
         $this->render('cliente/cadastro');
 
         Sessao::limpaFormulario();
@@ -29,6 +34,8 @@ class ClienteController extends Controller
 
     public function salvar()
     {
+        if (!$this->auth()) $this->redirect('/login/index');
+
         if (!$_POST) { $this->redirect('/cliente'); }
 
         $cliente = new Cliente();
@@ -59,6 +66,8 @@ class ClienteController extends Controller
 
     public function edicao($params)
     {
+        if (!$this->auth()) $this->redirect('/login/index');
+
         if(!$params){ $this->redirect('/cliente'); } 
         
         $id = $params[0];
@@ -82,6 +91,8 @@ class ClienteController extends Controller
 
     public function atualizar()
     {
+        if (!$this->auth()) $this->redirect('/login/index');
+
         if (!$_POST) { $this->redirect('/cliente'); }
         
         $cliente = new Cliente();
@@ -113,6 +124,8 @@ class ClienteController extends Controller
 
     public function exclusao($params)
     {
+        if (!$this->auth()) $this->redirect('/login/index');
+
         if(!$params){ $this->redirect('/cliente'); } 
 
         $id = $params[0];
@@ -136,6 +149,8 @@ class ClienteController extends Controller
 
     public function excluir()
     {
+        if (!$this->auth()) $this->redirect('/login/index');
+
         if (!$_POST) { $this->redirect('/cliente'); }
 
         $cliente = new Cliente();
