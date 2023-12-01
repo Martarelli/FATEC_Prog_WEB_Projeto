@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container p-5">
     <h1>Registro</h1>
     <p>Por favor, preencha os campos do formulário para criar a sua conta.</p>
     <hr />
@@ -39,8 +39,8 @@
                         <input type="password" class="form-control" name="password_confirm" placeholder="Confirmação da senha" value="<?php echo $Sessao::retornaValorFormulario('password_confirm'); ?>" required>
                     </div>    
                     <br />
-                    <button type="submit" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar </button>
-                    <a href="http://<?php echo APP_HOST; ?>/login" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Cancelar </a>
+                    <button type="submit" class="btn btn-success btn-sm"><i class="fa-solid fa-floppy-disk"></i> Salvar </button>
+                    <a href="http://<?php echo APP_HOST; ?>/login" class="btn btn-danger btn-sm"><i class="fa-solid fa-xmark"></i></span> Cancelar </a>
                 </form>
             </div>
         </div>

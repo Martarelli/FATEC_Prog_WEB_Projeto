@@ -1,5 +1,4 @@
-    <p>&nbsp;</p>
-    <footer class="footer">
+    <footer class="footer text-center">
         <div class="container">
             <p class="text-muted fw-bold">Copyright  &copy; Projeto MVC - Programação WEB <?= date('Y') ?>.</p>
         </div>
