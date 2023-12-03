@@ -53,7 +53,7 @@
 
                 <?php } else { ?>
 
-                    <li class="nav-item">
+                    <li class="nav-item px-5">
                         <a class="nav-link <?php if($viewVar['nameController'] == "LoginController") { ?> active <?php } ?>" href="http://<?php echo APP_HOST . "/login"; ?>" >
                         <i class="fa-solid fa-user"></i> Login</a>
                         </a>
