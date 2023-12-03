@@ -27,8 +27,8 @@
                 <input type="text" class="form-control" name="username" placeholder="" value="<?php echo $viewVar['usuario']->getUsername(); ?>" required>
             </div>
             <br />
-            <button type="submit" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar </button>          
-            <a href="http://<?php echo APP_HOST; ?>/usuario" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Cancelar </a>
+            <button type="submit" class="btn btn-success btn-sm"><i class="fa-solid fa-floppy-disk"></i> Salvar </button>          
+            <a href="http://<?php echo APP_HOST; ?>/usuario" class="btn btn-danger btn-sm"><i class="fa-solid fa-xmark"></i> Cancelar </a>
         </form>
     </div>
     <div class=" col-md-3"></div>

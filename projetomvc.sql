@@ -44,6 +44,7 @@ CREATE TABLE `pizza` (
   `tamanho` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+DROP TABLE IF EXISTS usuario;
 CREATE TABLE `usuario` (
   `idUsuario` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
@@ -96,5 +97,8 @@ ALTER TABLE `usuario`
 
 ALTER TABLE `pedido`
   ADD CONSTRAINT `fk_id_cliente` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`idCliente`);
+
+INSERT INTO `usuario` (`nome`, `email`, `username`, `password`, `data_cadastro`) VALUES ('Administrador', 'admin@ratatouille.com', 'admin', '$2y$10$6az4mkFVgsuPqkP6631MOe2PO0Gdup.HFIDGJOZP70dQSo4w4geui', current_timestamp())
+
 COMMIT;
 

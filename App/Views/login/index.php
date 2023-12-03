@@ -6,8 +6,8 @@
 
     <div class="w-25 d-flex justify-content-center align-items-center p-5">
         <div class="container p-3 mh-100">
-            <h1>Login</h1>
-            <p>Por favor, entre com os seus dados de login.</p>
+            <h1 class="text-center"><i class="fa-solid fa-pizza-slice"></i> Pizzaria Ratatouille</h1>
+            <p class="text-center">Por favor, entre com os seus dados de login.</p>
             <hr />
             <div class="row">
                 <div class="w-100">
@@ -40,7 +40,8 @@
                             <div class="form-group">
                                 <button type="submit" class="btn btn-dark btn-sm w-100 p-2"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
                                 <br /><br />
-                                <p>Não possui uma conta? <a href="http://<?php echo APP_HOST; ?>/login/register">Registre-se agora</a>.</p>
+                                <p class="text-center pt-3">Solicite uma conta ao Administrador</p>
+                                <p class="text-center"><b>admin@ratatouille.com</b></p>
                             </div>
                         </form>
                     </div>
