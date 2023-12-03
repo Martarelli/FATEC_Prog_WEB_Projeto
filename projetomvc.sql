@@ -34,7 +34,6 @@ CREATE TABLE `pedido` (
   `idPedido` int(11) NOT NULL,
   `dt_pedido` date NOT NULL,
   `idCliente` int(11) NOT NULL,
-  `idFornada` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 DROP TABLE IF EXISTS pizza;

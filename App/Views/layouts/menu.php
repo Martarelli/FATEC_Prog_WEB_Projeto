@@ -16,18 +16,31 @@
                         <i class="fa-solid fa-users"></i> Clientes</a>
                         </a>
                     </li>
+                    
+                    <li class="nav-item px-2">
+                        <a class="nav-link <?php if($viewVar['nameController'] == "UsuarioController") { ?> active <?php } ?>" href="http://<?php echo APP_HOST . "/usuario"; ?>" >
+                        <i class="fa-regular fa-user"></i> Usuários</a>
+                        </a>
+                    </li>
 
                     <li class="nav-item px-2">
                         <a class="nav-link <?php if($viewVar['nameController'] == "PizzaController") { ?> active <?php } ?>" href="http://<?php echo APP_HOST . "/pizza"; ?>" >
                         <i class="fa-solid fa-pizza-slice"></i> Pizzas</a>
                         </a>
                     </li>
-
+                    
                     <li class="nav-item px-2">
-                        <a class="nav-link <?php if($viewVar['nameController'] == "UsuarioController") { ?> active <?php } ?>" href="http://<?php echo APP_HOST . "/usuario"; ?>" >
-                        <i class="fa-regular fa-user"></i> Usuários</a>
+                        <a class="nav-link <?php if($viewVar['nameController'] == "BebidaController") { ?> active <?php } ?>" href="http://<?php echo APP_HOST . "/bebida"; ?>" >
+                        <i class="fa-solid fa-wine-bottle"></i> Bebidas</a>
                         </a>
                     </li>
+                    
+                    <li class="nav-item px-2">
+                        <a class="nav-link <?php if($viewVar['nameController'] == "PedidoController") { ?> active <?php } ?>" href="http://<?php echo APP_HOST . "/pedido"; ?>" >
+                        <i class="fa-solid fa-cart-shopping"></i> Pedido</a>
+                        </a>
+                    </li>
+
                     <li class="nav-item dropdown px-5">
                         <a class="nav-link dropdown-toggle <?php if($viewVar['nameController'] == "LoginController") { ?> active <?php } ?>" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa-solid fa-user"></i> <?= ucfirst($_SESSION["username"]) ?>
