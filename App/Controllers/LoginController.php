@@ -38,13 +38,11 @@ class LoginController extends Controller
         }
        
         Sessao::gravaLogin($id, $username);
-
         Sessao::limpaFormulario();
         Sessao::limpaErro();
-
         Sessao::gravaMensagem("Usuário logado com sucesso!");
 
-        $this->redirect('/login/dashboard');
+        $this->dashboard();
 
         Sessao::limpaMensagem();
     }
@@ -95,6 +93,10 @@ class LoginController extends Controller
     public function dashboard()
     {
         if (!$this->auth()) $this->redirect('/login/index');
+
+        $UsuarioDAO = new UsuarioDAO();
+
+        self::setViewParam('UsuarioLogado', $UsuarioDAO->getById($_SESSION['iduser']));
 
         $this->render('login/dashboard');
 

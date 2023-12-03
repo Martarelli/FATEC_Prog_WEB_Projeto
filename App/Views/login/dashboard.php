@@ -14,6 +14,14 @@
             <?php } ?>
             <br />
             <br />
+            <div class="card">
+                <h5 class="card-header"><?= ucfirst($viewVar['UsuarioLogado']->getNome())?></h5>
+                <div class="card-body">
+                    <h5 class="card-title">Cadastrado desde:</h5>
+                    <p class="card-text"><?= $viewVar['UsuarioLogado']->getData_cadastro(); ?></p>
+                    <a href="#" class="btn btn-dark"><i class="fa-regular fa-user"></i> Ir para Usuários</a>
+                </div>
+            </div>
             <br />
             <br />
             <br />
