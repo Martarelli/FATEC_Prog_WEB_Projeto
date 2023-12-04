@@ -8,15 +8,18 @@ use App\Models\DAO\PedidoDAO;
 use App\Models\Entidades\Pedido;
 
 use App\Models\DAO\ClienteDAO;
+use App\Models\DAO\PizzaDAO;
+use App\Models\DAO\BebidaDAO;
+
 use App\Models\Entidades\Cliente;
+use App\Models\Entidades\Pizza;
+use App\Models\Entidades\Bebida;
 
 class PedidoController extends Controller
 {
     
     public function index()
-    {       
-        if (!$this->auth()) $this->redirect('/login/index');
- 
+    {        
         $pedidoDAO = new PedidoDAO();
 
         self::setViewParam('listaPedidos', $pedidoDAO->listar());
@@ -27,15 +30,25 @@ class PedidoController extends Controller
         Sessao::limpaMensagem();
     }
 
+    public function pedidos() {
+        $pedidosDAO = new PedidoDAO();
+        self::setViewParam('listaPedidos', $pedidosDAO->listar());
+
+        $this->render('/pedido/pedidos');
+    }
+
     public function cadastro()
     {
-        if (!$this->auth()) $this->redirect('/login/index');
-
         $clienteDAO = new ClienteDAO();
+        $pizzaDAO = new PizzaDAO();
+        $bebidaDAO = new BebidaDAO();
+
 
         self::setViewParam('listaClientes', $clienteDAO->listar());
-        
+        self::setViewParam('listaPizza',  $pizzaDAO->listar());
+        self::setViewParam('listaBebida', $bebidaDAO->listar());
 
+    
         $this->render('/pedido/cadastro');
 
         Sessao::limpaFormulario();
@@ -46,15 +59,23 @@ class PedidoController extends Controller
 
     public function salvar()
     {
-        if (!$this->auth()) $this->redirect('/login/index');
-
         if (!$_POST) { $this->redirect('/Pedido'); }
 
         $cliente = new Cliente();
         $cliente->setIdCliente($_POST['idCliente']);
         
+        $pizza = new Pizza();
+        $pizza->setIdPizza($_POST['idCliente']);
+        
+        $bebida = new Bebida();
+        $bebida->setIdBebida($_POST['idBebida']);
+        
+
         $pedido = new Pedido();
         $pedido->setCliente($cliente);
+        $pedido->setBebida($bebida);
+        $pedido->setPizza($pizza);
+        
 
         Sessao::gravaFormulario($_POST);
         
@@ -80,8 +101,6 @@ class PedidoController extends Controller
 
     public function edicao($params)
     {
-        if (!$this->auth()) $this->redirect('/login/index');
-
         $id = $params[0];
 
         $pedidoDAO = new PedidoDAO();
@@ -94,8 +113,14 @@ class PedidoController extends Controller
         }
 
         $clienteDAO = new ClienteDAO();
+        $bebidaDAO = new BebidaDAO();
+        $pizzaDAO = new PizzaDAO();
+
 
         self::setViewParam('listaClientes', $clienteDAO->listar());
+        self::setViewParam('listaPizza', $bebidaDAO->listar());
+        self::setViewParam('listaBebida', $pizzaDAO->listar());
+
         self::setViewParam('pedido',$pedido);
     
         $this->render('/pedido/editar');
@@ -106,8 +131,6 @@ class PedidoController extends Controller
 
     public function atualizar()
     {
-        if (!$this->auth()) $this->redirect('/login/index');
-
         $pedido = new Pedido();
 
         $pedido->setIdPedido($_POST['id']);
@@ -137,8 +160,6 @@ class PedidoController extends Controller
     
     public function exclusao($params)
     {
-        if (!$this->auth()) $this->redirect('/login/index');
-
         $id = $params[0];
 
         $pedidoDAO = new PedidoDAO();
@@ -160,8 +181,6 @@ class PedidoController extends Controller
 
     public function excluir()
     {
-        if (!$this->auth()) $this->redirect('/login/index');
-
         if (!$_POST) { $this->redirect('/cliente'); }
 
         $pedido = new Pedido();

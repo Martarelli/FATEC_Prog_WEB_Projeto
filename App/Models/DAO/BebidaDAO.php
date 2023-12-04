@@ -68,7 +68,7 @@ class BebidaDAO extends BaseDAO
     public function excluir(int $id)
     {
         try {
-            return $this->delete('bebida', "id = $id");
+            return $this->delete('bebida', "idBebida = $id");
         } catch (\Exception $e) {
             throw new \Exception("Erro ao deletar" . $e->getMessage(), 500);
         }

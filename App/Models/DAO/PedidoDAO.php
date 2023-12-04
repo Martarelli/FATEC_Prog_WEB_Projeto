@@ -4,28 +4,41 @@
 namespace App\Models\DAO;
 
 use App\Models\Entidades\Pedido;
-use Exception;
 
 class PedidoDAO extends BaseDAO
 {
     public function getById($id)
     {
         $resultado = $this->select(
-            "SELECT p.id as idPedido,
-                    c.id as idCliente,
-                FROM pedido  as p INNER JOIN cliente as c on p.idCliente = c.id
-                WHERE p.id = $id
-            "
+            "SELECT p.idPedido,
+                    c.idCliente,
+                    c.nome as nomeCliente,
+                    pi.idPizza,
+                    pi.nome as nomePizza,
+                    b.idBebida,
+                    b.nome as nomeBebida
+                FROM pedido as p 
+                INNER JOIN cliente as c ON p.idCliente = c.idCliente
+                INNER JOIN pizza as pi ON p.idPizza = pi.idPizza
+                INNER JOIN bebida as b ON p.idBebida = b.idBebida
+                WHERE p.idPedido = $id"
         );
 
         $dataSetPedidos = $resultado->fetch();
 
         if($dataSetPedidos) {
             $pedido = new Pedido();
-            $pedido->setIdPedido($dataSetPedidos['idPedido']);
             $pedido->getCliente()->setIdCliente($dataSetPedidos['idCliente']);
-            $pedido->getCliente()->setNome($dataSetPedidos['nomeCliente']);
-
+            $pedido->getCliente()->getNome($dataSetPedidos['nomeCliente']);
+    
+            $pedido->getPizza()->setIdPizza($dataSetPedidos['idPizza']);
+            $pedido->getPizza()->setNome($dataSetPedidos['nomePizza']);
+    
+            $pedido->getBebida()->setIdBebida($dataSetPedidos['idBebida']);
+            $pedido->getBebida()->setNome($dataSetPedidos['nomeBebida']);
+    
+            $pedido->setIdPedido($dataSetPedidos['idPedido']);
+    
             return $pedido;
         }
 
@@ -44,12 +57,16 @@ class PedidoDAO extends BaseDAO
         try {
 
             $idCliente = $pedido->getCliente()->getIdCliente();
-          
+            $idBebida = $pedido->getBebida()->getIdBebida();
+            $idPizza = $pedido->getPizza()->getIdPizza();
+
             return $this->insert(
                 'pedido',
-                ":idCliente",
+                ":idCliente, :idPizza, idBebida",
                 [
                     ':idCliente' => $idCliente,
+                    ':idPizza' => $idPizza,
+                    ':idBebida' => $idBebida
                 ]
             );
 
@@ -64,13 +81,18 @@ class PedidoDAO extends BaseDAO
 
             $id = $pedido->getIdPedido();
             $idCliente = $pedido->getCliente()->getIdCliente();
-            
+            $idBebida = $pedido->getBebida()->getIdBebida();
+            $idPizza = $pedido->getPizza()->getIdPizza();
+
+
             return $this->update(
                 'pedido',
-                "idCliente = :idCliente",
+                "idCliente = :idCliente, idPizza = :idPizza, idBebida = :idBebida",
                 [
                     ':id' => $id,
-                    ':idCliente' => $idCliente
+                    ':idCliente' => $idCliente,
+                    ':idPizza' => $idPizza,
+                    ':idBebida' => $idBebida
                 ],
                 "idPedido = :id"
             );
@@ -82,7 +104,7 @@ class PedidoDAO extends BaseDAO
     public function excluir(int $id)
     {
         try {
-            return $this->delete('pedido', "id = $id");
+            return $this->delete('pedido', "idPedido = $id");
         } catch (\Exception $e) {
             throw new \Exception("Erro ao deletar" . $e->getMessage(), 500);
         }

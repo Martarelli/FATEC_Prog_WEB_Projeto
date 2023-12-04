@@ -10,8 +10,6 @@ class BebidaController extends Controller
 {
     public function index()
     {
-        if (!$this->auth()) $this->redirect('/login/index');
-
         $BebidaDAO = new BebidaDAO();
 
         self::setViewParam('listaBebida', $BebidaDAO->listar());
@@ -22,8 +20,6 @@ class BebidaController extends Controller
 
     public function cadastro()
     {
-        if (!$this->auth()) $this->redirect('/login/index');
-
         $this->render('bebida/cadastro');
 
         Sessao::limpaFormulario();
@@ -33,8 +29,6 @@ class BebidaController extends Controller
 
     public function salvar()
     {
-        if (!$this->auth()) $this->redirect('/login/index');
-
         if (!$_POST) { $this->redirect('/bebida');}
 
         $bebida = new Bebida();
@@ -64,8 +58,6 @@ class BebidaController extends Controller
 
     public function edicao($params)
     {
-        if (!$this->auth()) $this->redirect('/login/index');
-
         if (!$params) {
             $this->redirect('/bebida');
         }
@@ -91,8 +83,6 @@ class BebidaController extends Controller
 
     public function atualizar()
     {
-        if (!$this->auth()) $this->redirect('/login/index');
-
         if (!$_POST) {$this->redirect('/bebida');}
 
         $bebida = new Bebida();
@@ -122,8 +112,6 @@ class BebidaController extends Controller
 
     public function exclusao($params)
     {
-        if (!$this->auth()) $this->redirect('/login/index');
-
         if (!$params) {
             $this->redirect('/bebida');
         }
@@ -149,8 +137,6 @@ class BebidaController extends Controller
 
     public function excluir()
     {
-        if (!$this->auth()) $this->redirect('/login/index');
-
         if (!$_POST) {$this->redirect('/cliente');}
 
         $bebida = new Bebida();

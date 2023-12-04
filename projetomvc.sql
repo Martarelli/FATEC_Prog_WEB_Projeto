@@ -32,8 +32,10 @@ CREATE TABLE `ingrediente` (
 DROP TABLE IF EXISTS pedido;
 CREATE TABLE `pedido` (
   `idPedido` int(11) NOT NULL,
-  `dt_pedido` date NOT NULL,
+  `dt_pedido` datetime NOT NULL DEFAULT current_timestamp(),
   `idCliente` int(11) NOT NULL,
+  `idBebida` int(11) NOT NULL,
+  `idPizza` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 DROP TABLE IF EXISTS pizza;
@@ -67,7 +69,9 @@ ALTER TABLE `ingrediente`
 
 ALTER TABLE `pedido`
   ADD PRIMARY KEY (`idPedido`),
-  ADD KEY `fk_id_cliente` (`idCliente`);
+  ADD KEY `fk_id_cliente` (`idCliente`),
+  ADD KEY `fk_id_pizza` (`idPizza`),
+  ADD KEY `fk_id_bebida` (`idBebida`);
 
 ALTER TABLE `pizza`
   ADD PRIMARY KEY (`idPizza`) ;
